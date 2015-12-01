@@ -9,7 +9,8 @@
     "client:compile": "./bin/webpack --config config/client.config.js -w --debug --devtool eval --output-pathinfo",
     "server": "PORT=8051 nodemon -w server/dist/index.bundle.js server/dist/index.bundle.js",
     "server:compile": "./bin/webpack --config config/server.config.js -w",
-    "server:prod": "NODE_ENV=production node server/dist/index.bundle.js"
+    "server:prod": "NODE_ENV=production node server/dist/index.bundle.js",
+    "test": "./bin/testem --file client/test/testem.json"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
     "fs-extra": "^0.26.2",
     "prok": "~0.0.7",
     "rimraf": "^2.4.4",
+    "testem": "^0.9.11",
     "webpack": "^1.12.9"
   },
   "license": "ISC",

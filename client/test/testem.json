@@ -1,0 +1,17 @@
+{
+    "framework": "jasmine2",
+    "src_files": [
+        "client/public/dist/bundle.js",
+        "client/test/unit/**/*.coffee"
+    ],
+    "before_tests": "coffee -c client/test/unit/**/*.coffee",
+    "serve_files": [
+        "node_modules/babel-polyfill/dist/polyfill.min.js",
+        "client/public/lib/angular/angular.js",
+        "client/public/lib/angular-mocks/angular-mocks.js",
+        "client/public/dist/bundle.js",
+        "client/test/unit/**/*.js"
+    ],
+    "launch_in_dev": ["Chrome"],
+    "launch_in_ci": ["PhantomJS"]
+}

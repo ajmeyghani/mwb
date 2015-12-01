@@ -2,6 +2,7 @@
 
 1. Node and npm
 2. bower: `npm i bower -g`
+3. (Optional) CoffeeScript `npm install -g coffee-script`
 
 # Set up
 
