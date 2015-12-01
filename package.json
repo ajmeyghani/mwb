@@ -5,12 +5,15 @@
   "main": "client.config.js",
   "scripts": {
     "start": "./bin/prok config/Procfile",
-    "build": "./bin/build",
+    "build": "./tasks/build",
     "client:compile": "./bin/webpack --config config/client.config.js -w --debug --devtool eval --output-pathinfo",
     "server": "PORT=8051 nodemon -w server/dist/index.bundle.js server/dist/index.bundle.js",
     "server:compile": "./bin/webpack --config config/server.config.js -w",
     "server:prod": "NODE_ENV=production node server/dist/index.bundle.js",
-    "test": "./bin/testem --file client/test/testem.json"
+    "tdd": "./bin/testem --file client/test/testem.json",
+    "test": "./bin/testem  ci --file client/test/testem.json -P 2",
+    "pretest:func": "webdriver-manager update",
+    "test:func": "protractor client/test/protractor.config.js"
   },
   "repository": {
     "type": "git",
