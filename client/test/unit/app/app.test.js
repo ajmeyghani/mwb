@@ -3,7 +3,7 @@
   describe('App Controller Tests:', function() {
     var $controller;
     $controller = void 0;
-    beforeEach(window.module('boiler'));
+    beforeEach(window.module('mymodulename'));
     beforeEach(inject(function(_$controller_) {
       return $controller = _$controller_;
     }));
