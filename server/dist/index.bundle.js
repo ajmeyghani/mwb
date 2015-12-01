@@ -102,7 +102,9 @@
 
 	var port = process.env.PORT || 8760;
 	app.listen(port, function () {
-	  // require('open')('http://localhost:' + port);
+	  if (env === 'production') {
+	    __webpack_require__(4)('http://localhost:' + port);
+	  }
 	  console.log('go to -> http://localhost:' + port);
 	});
 
@@ -117,6 +119,12 @@
 /***/ function(module, exports) {
 
 	module.exports = require("express");
+
+/***/ },
+/* 4 */
+/***/ function(module, exports) {
+
+	module.exports = require("open");
 
 /***/ }
 /******/ ]);

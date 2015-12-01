@@ -48,6 +48,8 @@ app.get('*', (req, res, next) => {
 
 let port = process.env.PORT || 8760;
 app.listen(port, function () {
-  // require('open')('http://localhost:' + port);
   console.log('go to -> http://localhost:' + port);
+  if (env === 'production') {
+    require('open')('http://localhost:' + port);
+  }
 });

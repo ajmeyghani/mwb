@@ -5,9 +5,11 @@
   "main": "client.config.js",
   "scripts": {
     "start": "./bin/prok config/Procfile",
+    "build": "./bin/build",
     "client:compile": "./bin/webpack --config config/client.config.js -w --debug --devtool eval --output-pathinfo",
     "server": "PORT=8051 nodemon -w server/dist/index.bundle.js server/dist/index.bundle.js",
-    "server:compile": "./bin/webpack --config config/server.config.js -w"
+    "server:compile": "./bin/webpack --config config/server.config.js -w",
+    "server:prod": "NODE_ENV=production npm run server"
   },
   "repository": {
     "type": "git",
@@ -18,7 +20,9 @@
     "babel-core": "^5.8.34",
     "babel-loader": "^5.3.3",
     "babel-polyfill": "^6.2.0",
+    "fs-extra": "^0.26.2",
     "prok": "~0.0.7",
+    "rimraf": "^2.4.4",
     "webpack": "^1.12.9"
   },
   "license": "ISC",
