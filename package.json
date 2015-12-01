@@ -4,7 +4,7 @@
   "description": "",
   "main": "client.config.js",
   "scripts": {
-    "start": "./bin/prok config/Procfile",
+    "start": "./bin/prok config/dev.procfile",
     "build": "./tasks/build",
     "client:compile": "./bin/webpack --config config/client.config.js -w --debug --devtool eval --output-pathinfo",
     "server": "PORT=8051 nodemon -w server/dist/index.bundle.js server/dist/index.bundle.js",
