@@ -1,0 +1,3 @@
+clt-c: npm run client:compile
+svr-c: npm run server:compile
+srver: npm run server
