@@ -1,6 +1,6 @@
 #!/bin/bash
-bin/rimraf client/public
-NODE_ENV=production ./bin/webpack --config config/client.config.js
+npm run clean
+bin/webpack --config config/client.config.js --debug --devtool eval --output-pathinfo
 NODE_ENV=production ./bin/webpack --config config/client.config.js -d
 ./bin/webpack --config config/server.config.js -d
 node tasks/copy-replace.js

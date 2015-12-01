@@ -1,4 +1,14 @@
-/******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["mymodulename"] = factory();
+	else
+		root["mymodulename"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 
@@ -47,7 +57,9 @@
   \****************************/
 /***/ function(module, exports) {
 
-	eval("/*\\\n * Set the angular module.\n\\*/\n'use strict';\n\nvar boiler = angular.module('boiler', []);\n\nboiler.controller('AppCtrl', function () {\n  this.name = \"Hello World Boiler!\";\n});\n\n/*\\\n * Bootstrap the app.\n\\*/\nangular.element(document).ready(function () {\n  angular.bootstrap(document.getElementsByTagName('body')[0], ['boiler']);\n});\n\nmodule.exports = boiler;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./client/src/main.js\n ** module id = 0\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./client/src/main.js?");
+	eval("/*\\\n * Set the angular module.\n\\*/\n'use strict';\n\nvar boiler = angular.module('mymodulename', []);\n\nboiler.controller('AppCtrl', function () {\n  this.name = \"Hello World Boiler!\";\n});\n\nmodule.exports = boiler;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./client/src/main.js\n ** module id = 0\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./client/src/main.js?");
 
 /***/ }
-/******/ ]);
+/******/ ])
+});
+;

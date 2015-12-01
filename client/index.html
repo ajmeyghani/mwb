@@ -12,6 +12,11 @@
     <img src="/static/imgs/boiler.png" alt="">
   </div>
   <script src="/static/bundle.js"></script>
+  <script>
+  angular.element(document).ready(function () {
+    angular.bootstrap(document.getElementsByTagName('body')[0], ['mymodulename']);
+  });
+  </script>
 </body>
 </html>
 

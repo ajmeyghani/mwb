@@ -5,7 +5,7 @@
   "main": "client.config.js",
   "scripts": {
     "start": "./bin/prok config/dev.procfile",
-    "clean": "./bin/rimraf client/public",
+    "clean": "./bin/rimraf client/public client/static/bundle*",
     "build": "./tasks/build",
     "client:compile": "bin/webpack --config config/client.config.js -w --debug --devtool eval --output-pathinfo",
     "server": "PORT=8051 nodemon -w server/dist/index.bundle.js server/dist/index.bundle.js",
@@ -26,10 +26,13 @@
     "babel-core": "^5.8.34",
     "babel-loader": "^5.3.3",
     "babel-polyfill": "^6.2.0",
+    "css-loader": "^0.23.0",
     "fs-extra": "^0.26.2",
     "ncp": "^2.0.0",
     "prok": "~0.0.7",
+    "raw-loader": "^0.5.1",
     "rimraf": "^2.4.4",
+    "style-loader": "^0.13.0",
     "webpack": "^1.12.9"
   },
   "license": "ISC",

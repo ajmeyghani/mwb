@@ -24,6 +24,16 @@ Set up dependencies with:
 2. `npm i` in the server folder
 3. `bower i` in the client folder
 
+### Set Module name
+
+Set your module name in three places:
+
+1. `config/client.config.js`
+2. `client/src/main.js`
+3. `client/index.html`
+
+Look for the string `modulename`
+
 # Start Development
 
 After installing the dependencies, run the following to start development:
