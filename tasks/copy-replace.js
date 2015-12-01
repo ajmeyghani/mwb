@@ -13,7 +13,7 @@ fs.ensureDir("client/public/dist", function (err) {
     if ( err ) { return console.error(err); }
 
     data = data.replace(/\/public\//g , '/')
-               .replace('dist/bundle.js', 'dist/bundle.min.js')
+               .replace('static/bundle.js', 'dist/bundle.min.js')
                .replace('angular.js', 'angular.min.js');
 
     fs.writeFile("client/public/home.html", data, function (err) { if (err) {return console.error(err);} });

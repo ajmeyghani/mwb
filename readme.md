@@ -2,19 +2,19 @@
 
 A minimal webpack boilerplate focused on Angular. You can easily update it to work with other tools.
 
-# Requirements
+# Global Requirements
 
 1. Node and npm
 2. bower: `npm i bower -g`
 3. (Optional) CoffeeScript `npm install -g coffee-script`
-4. Webpack `npm i webpack -g`
 4. Java (for protractor)
-5. protractor: `npm i protractor@2.5.1 -g`
-6. nodemon: `npm i nodemon -g`
+5. Testem `npm i testem -g`
+6. protractor: `npm i protractor@2.5.1 -g`
+7. nodemon: `npm i nodemon -g`
 
 **Oneliner:**
 
-    npm i bower coffee-script webpack protractor@2.5.1 nodemon -g
+    npm i bower coffee-script testem protractor@2.5.1 nodemon -g
 
 # Set up
 
