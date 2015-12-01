@@ -1,6 +1,6 @@
 describe('Sample', function () {
   it('should', function () {
     browser.get('http://localhost:8051');
-    browser.pause();
+    expect(browser.getTitle()).toBe('Boilerplate');
   });
 });
