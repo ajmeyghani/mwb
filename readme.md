@@ -1,3 +1,7 @@
+# Minimal Webpack Boilerplate
+
+A minimal webpack boilerplate focused on Angular. You can easily update it to work with other tools.
+
 # Requirements
 
 1. Node and npm
