@@ -49,6 +49,7 @@ boiler.directive('hello', () => ({
   restrict: 'E',
   template: helloTpl
 }));
+
 /*\
  * Export the module at the end
  * Important to use `module.exports` explicitly
