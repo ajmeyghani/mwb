@@ -14,7 +14,7 @@ fs.ensureDir("client/public", function (err) {
 
     data = data.replace(/\/public\//g , '/')
                .replace('bundle.js', 'bundle.min.js')
-               .replace('angular.js', 'angular.min.js')
+               .replace('/bower/angular/angular.js', '//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js') // or replace with Angular CDN
                .replace('main.css', 'main.min.css');
 
     fs.writeFile("client/public/home.html", data, function (err) { if (err) {return console.error(err);} });

@@ -5,8 +5,12 @@ require('main.css');
 
 /*\
  * Set the angular module.
+ * We are using the `_lib_` to indicate that
+ * `lib` is loaded via CDN or a script tag and
+ * will not be included in the final bundle. This
+ * is set in the `externals` field in `config/client.config`
 \*/
-const boiler = angular.module('mymodulename', []);
+const boiler = require('_angular_').module('mymodulename', []);
 
 /*\
  * A basic contorller

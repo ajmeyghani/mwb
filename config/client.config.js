@@ -1,10 +1,13 @@
 var path = require('path');
-var clientPath = path.resolve('./client');
-var clientSrc = path.resolve(clientPath, 'src');
-var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var env = process.env.NODE_ENV;
 var isProd = (env === 'production');
+
+var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+var clientPath = path.resolve('./client');
+var clientSrc = path.resolve(clientPath, 'src');
+var bowerPath = path.resolve(clientPath, 'bower');
 
 var plugins = [
   new webpack.DefinePlugin({ IS_PROD: process.env.NODE_ENV === 'production' }),
@@ -38,7 +41,10 @@ module.exports = {
   },
   plugins: plugins,
   resolve: {
-    modulesDirectories: ['node_modules', clientSrc]
+    modulesDirectories: ['node_modules', clientSrc, bowerPath]
+  },
+  externals: {
+    '_angular_': 'angular' // `angular` refers to the global object that would exist on window during run time.
   }
 
 };
