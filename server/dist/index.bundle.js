@@ -102,10 +102,10 @@
 
 	var port = process.env.PORT || 8760;
 	app.listen(port, function () {
+	  console.log('go to -> http://localhost:' + port);
 	  if (env === 'production') {
 	    __webpack_require__(4)('http://localhost:' + port);
 	  }
-	  console.log('go to -> http://localhost:' + port);
 	});
 
 /***/ },
