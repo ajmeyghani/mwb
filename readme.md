@@ -42,3 +42,14 @@ Then go to `http://localhost:8051` to see the app.
 	the open a new terminal tab and do:
 
 2. `npm run test:func`
+
+
+# Building
+
+You can build the client with:
+
+	npm run build
+
+Then, you can serve it with:
+
+	npm run server:prod
