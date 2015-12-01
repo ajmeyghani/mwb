@@ -9,7 +9,7 @@
 
 # Set up
 
-Set up dependencies:
+Set up dependencies with:
 
 1. `npm i` in the root of the project
 2. `npm i` in the server folder
@@ -27,18 +27,14 @@ Then go to `http://localhost:8051` to see the app.
 
 ## Unit Tests
 
-### CI Mode
+1. CI Mode: `npm test`
+2. Watch tdd mode: `npm run tdd`
 
-    npm test
-
-### TDD Mode
-
-    npm run tdd
 
 ## Protractor Tests
 
-    npm start
+1. First, start the app: `npm start`
 
-then, in a new terminal tab:
+	the open a new terminal tab and do:
 
-    npm run test:func
+2. `npm run test:func`
