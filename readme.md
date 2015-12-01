@@ -36,7 +36,7 @@ Look for the string `modulename`
 
 # Start Development
 
-# IMPORTANT NOTES#
+<h3 style="color:red;font-size: 50px"> Important Notes </h3>
 ****
 
 Before you start, remember the following notes
