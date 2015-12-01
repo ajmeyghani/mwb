@@ -5,7 +5,7 @@
   "main": "client.config.js",
   "scripts": {
     "start": "npm run clean && ./bin/prok config/dev.procfile",
-    "clean": "./bin/rimraf client/public client/static/bundle*",
+    "clean": "./bin/rimraf client/public client/static/bundle",
     "build": "./tasks/build",
     "client:compile": "bin/webpack --config config/client.config.js -w --debug --devtool eval --output-pathinfo",
     "server": "PORT=8051 nodemon -w server/dist/index.bundle.js server/dist/index.bundle.js",

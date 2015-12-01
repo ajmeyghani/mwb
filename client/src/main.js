@@ -2,6 +2,7 @@
  * Load some css
 \*/
 require('main.css');
+require('font-awesome/css/font-awesome.css');
 
 /*\
  * Set the angular module.
@@ -26,13 +27,11 @@ boiler.controller('AppCtrl', function () {
 /*\
  * Loading a large image
 \*/
-const largImg = require('large.png');
-
 
 /*\
  * Loading a small asset (png icon)
 \*/
-const icon = require('icon.png');
+const icon = require('drop.png');
 /*\
  * Using the png inside a directive
 \*/
