@@ -1,5 +1,6 @@
 #!/bin/bash
-bin/rimraf client/public/dist
+bin/rimraf client/public
 NODE_ENV=production ./bin/webpack --config config/client.config.js
 ./bin/webpack --config config/client.config.js -d
-node tasks/replace-index.js
+./bin/webpack --config config/server.config.js -d
+node tasks/copy-replace.js

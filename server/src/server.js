@@ -7,13 +7,17 @@ let serverSettings = { client: path.resolve('./client') };
 
 /*\ Public static route for static assets.
 \*/
-if (env !== "production") {
-  let publicPath = path.join(serverSettings.client, 'public');
-  app.use('/public', express.static(publicPath));
-} else {
+
+if (env === 'production') {
   app.use('/', express.static(path.resolve('client/public')));
 }
 
+let bowerPath = path.join(serverSettings.client, 'bower');
+let staticPath = path.join(serverSettings.client, 'static');
+let publicPath = path.join(serverSettings.client, 'public');
+app.use('/bower', express.static(bowerPath));
+app.use('/static', express.static(staticPath));
+app.use('/public', express.static(publicPath));
 
 /*\ Main route:
   - If the request URI does not start with `api`, serve `index.html`.

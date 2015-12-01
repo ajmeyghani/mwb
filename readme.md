@@ -7,9 +7,14 @@ A minimal webpack boilerplate focused on Angular. You can easily update it to wo
 1. Node and npm
 2. bower: `npm i bower -g`
 3. (Optional) CoffeeScript `npm install -g coffee-script`
+4. Webpack `npm i webpack -g`
 4. Java (for protractor)
 5. protractor: `npm i protractor@2.5.1 -g`
 6. nodemon: `npm i nodemon -g`
+
+**Oneliner:**
+
+    npm i bower coffee-script webpack protractor@2.5.1 nodemon -g
 
 # Set up
 
@@ -43,7 +48,6 @@ Then go to `http://localhost:8051` to see the app.
 
 2. `npm run test:func`
 
-
 # Building
 
 You can build the client with:
@@ -53,3 +57,7 @@ You can build the client with:
 Then, you can serve it with:
 
 	npm run server:prod
+
+### Build and serve
+
+The alias for buld and run is `npm run pl`

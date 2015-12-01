@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 var path = require('path');
+var ncp = require('ncp');
+ncp.limit = 16;
 var fs = require('fs-extra');
 fs.ensureDir("client/public/dist", function (err) {
   if (err) { return console.log(err); }
@@ -15,6 +17,11 @@ fs.ensureDir("client/public/dist", function (err) {
                .replace('angular.js', 'angular.min.js');
 
     fs.writeFile("client/public/home.html", data, function (err) { if (err) {return console.error(err);} });
+  });
+
+  // copy static files
+  ncp("client/static", "client/public/static", function (err) {
+   if (err) { return console.error(err); }
   });
 
 });
