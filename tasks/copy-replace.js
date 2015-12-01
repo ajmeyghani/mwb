@@ -13,8 +13,9 @@ fs.ensureDir("client/public", function (err) {
     if ( err ) { return console.error(err); }
 
     data = data.replace(/\/public\//g , '/')
-               .replace('static/bundle.js', 'static/bundle.min.js')
-               .replace('angular.js', 'angular.min.js');
+               .replace('bundle.js', 'bundle.min.js')
+               .replace('angular.js', 'angular.min.js')
+               .replace('main.css', 'main.min.css');
 
     fs.writeFile("client/public/home.html", data, function (err) { if (err) {return console.error(err);} });
   });
