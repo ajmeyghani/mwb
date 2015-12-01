@@ -4,7 +4,7 @@
   "description": "",
   "main": "client.config.js",
   "scripts": {
-    "start": "./bin/prok config/dev.procfile",
+    "start": "npm run clean && ./bin/prok config/dev.procfile",
     "clean": "./bin/rimraf client/public client/static/bundle*",
     "build": "./tasks/build",
     "client:compile": "bin/webpack --config config/client.config.js -w --debug --devtool eval --output-pathinfo",

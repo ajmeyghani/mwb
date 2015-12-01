@@ -36,7 +36,9 @@ module.exports = {
        { test: /\.js$/,          loader: 'babel', include: clientSrc },
        { test: /\.html$|\.htm$/, loader: 'raw',   include: clientSrc },
        { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader') },
-       { test: /\.png$|\.jpg$|\.jpeg$|\.woff$|\.ttf$|\.svg$/, loader: "url?limit=10000", include: clientSrc } // spit out a file if larger than 10kb
+       { test: /\.png$|\.jpg$|\.jpeg$|\.woff$|\.ttf$|\.svg$/,
+         loader: "url?limit=10000&name=[name][hash:6].[ext]", // spit out a file if larger than 10kb
+         include: clientSrc }
      ]
   },
   plugins: plugins,
@@ -44,7 +46,7 @@ module.exports = {
     modulesDirectories: ['node_modules', clientSrc, bowerPath]
   },
   externals: {
-    '_angular_': 'angular' // `angular` refers to the global object that would exist on window during run time.
+    '_angular_': 'angular' // `angular` refers to the global object that would exist on window during run time from a script tag for example.
   }
 
 };

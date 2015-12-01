@@ -24,7 +24,13 @@ boiler.controller('AppCtrl', function () {
 \*/                                    /*\
 
 /*\
- * Loading an asset (png image)
+ * Loading a large image
+\*/
+const largImg = require('large.png');
+
+
+/*\
+ * Loading a small asset (png icon)
 \*/
 const icon = require('icon.png');
 /*\
