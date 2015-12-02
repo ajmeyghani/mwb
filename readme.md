@@ -1,4 +1,4 @@
-# Minimal Webpack Boilerplate
+# Minimal [Webpack](https://github.com/petehunt/webpack-howto) Boilerplate
 
 ### Table of Contents
 
@@ -19,6 +19,3 @@
 - [Deploy](./docs/deploy.md)
 
 - [Contribution](./docs/contrib.md)
-
-
-

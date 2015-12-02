@@ -14,11 +14,13 @@ if (env === 'production') {
 }
 
 let bowerPath = path.join(serverSettings.client, 'bower');
+let nodeModulesPath = path.join(serverSettings.client, 'node_modules');
 let staticPath = path.join(serverSettings.client, 'static');
 let publicPath = path.join(serverSettings.client, 'public');
 app.use('/bower', express.static(bowerPath));
 app.use('/static', express.static(staticPath));
 app.use('/public', express.static(publicPath));
+app.use('/node_modules', express.static(nodeModulesPath));
 
 /*\ Main route:
   - If the request URI does not start with `api`, serve `index.html`.

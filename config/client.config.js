@@ -27,11 +27,9 @@ if (isProd) {
   plugins.push(uglify);
 }
 
-/* init loaders */
-var loaders = [];
 
-/* babel and asset settings */
-var loader = [
+/* init loaders with babel and asset settings */
+var loaders = [
   { test: /\.js$/,          loader: 'babel', include: clientSrc },
   { test: /\.html$|\.htm$/, loader: 'raw',   include: clientSrc },
   { test: /\.(png|jpg|jpeg)$|\.(woff|woff2|ttf|eot|svg)(.*)?$/,
@@ -60,8 +58,8 @@ loaders.push(cssLoaderSettings);
 module.exports = {
   entry: path.resolve(clientSrc, 'main.js'),
   output: {
-    filename: env === 'production' ? 'bundle.min.js' : 'bundle.js',
-    path: path.resolve(clientPath, 'static/bundle'),
+    filename: isProd ? 'bundle.min.js' : 'bundle.js',
+    path:  isProd ? path.resolve('client/public/static/bundle') : path.resolve(clientPath, 'static/bundle'),
     libraryTarget: 'umd',
     library: 'mymodulename'
   },
