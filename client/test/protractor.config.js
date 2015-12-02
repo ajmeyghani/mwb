@@ -14,7 +14,7 @@ exports.config = {
     showColors: true,
   },
 
-  onPrepare: function(){
+  onPrepare: function() {
     global.isAngularSite = function(flag){
       browser.ignoreSynchronization = !flag;
     };

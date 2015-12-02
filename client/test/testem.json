@@ -7,8 +7,6 @@
     "before_tests": "coffee -c client/test/unit/**/*.coffee",
     "serve_files": [
         "node_modules/babel-polyfill/dist/polyfill.min.js",
-        "client/bower/angular/angular.js",
-        "client/bower/angular-mocks/angular-mocks.js",
         "client/static/bundle/bundle.js",
         "client/test/unit/**/*.js"
     ],

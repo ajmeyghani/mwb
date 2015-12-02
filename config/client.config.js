@@ -46,8 +46,12 @@ var cssLoaderSettings = {
   test:/\.css$/, loader: isSeparateCss ? ExtractTextPlugin.extract('style-loader', 'css-loader') : 'style!css'
 };
 if (isSeparateCss) {
-  /* If you enable `separateCSS`, make sure to add main.css to index.html */
-  /* <link rel="stylesheet" href="/static/bundle/main.css"> */
+  /* If you enable `separateCSS`, make sure to add main.css to index.html
+      <link rel="stylesheet" href="/static/bundle/main.css">
+
+    otherwise, you can remove the `link` tag.
+  */
+
   plugins.push(new ExtractTextPlugin(isProd ? 'main.min.css' : 'main.css'));
 }
 loaders.push(cssLoaderSettings);
@@ -66,7 +70,7 @@ module.exports = {
   },
   plugins: plugins,
   resolve: {
-    modulesDirectories: ['node_modules', clientSrc, bowerPath]
+    modulesDirectories: ['node_modules', clientSrc, bowerPath, clientPath]
   },
   externals: {
     /*

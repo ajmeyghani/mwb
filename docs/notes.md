@@ -1,12 +1,5 @@
 # IMPORTANT NOTES
 
-### Setting Module Name
-
-Look for the string `mymodulename` and change it in:
-
-1. `config/client.config.js`
-2. `client/src/main.js`
-3. `client/index.html`
 
 Before you start, note:
 
@@ -18,4 +11,4 @@ Before you start, note:
 
 - Webpack is already looking at the `client/src` folder for "assets". So you can simply require assets without specifying `client/src` everytime. That is, if a file is at `client/src/component/component.js`, you can require it with: `require('component/component.js')`. If you want to set more "modules folder", add them to the `config/client.config.js` file, in the `resolve` section.
 
-- Use webpack externals if you don't want to include a module in your final bundle (but load it via a script tag) See `client/src/main.js` for an example on how angular is required.
+- Use webpack externals if you don't want to include a module in your final bundle (but load it via a script tag). See `config/client.config.js` for more information.

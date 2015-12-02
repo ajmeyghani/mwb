@@ -1,8 +1,31 @@
-# Installing Dependencies
+# Installing CLIENT Dependencies
 
-## Front-end Packages
+### FIRST MAKE SURE YOU ARE IN THE CLIENT FOLDER `cd client` ##
 
-Use bower to install front-end packages.
+
+## NPM Packages
+
+### FIRST MAKE SURE YOU ARE IN THE CLIENT FOLDER `cd client` ##
+
+No-brainer, install it as a production dependency: `npm install package-name --save`.
+
+Then simply require it: `const mod = require('package-name');`
+
+**Example: Using angular from npm**
+
+```
+cd client
+npm i angular -S
+```
+
+then in `client/src/main.js`:
+
+```
+const angular = require('anguilar')
+```
+
+
+## Bower Packages
 
 **Dev Dependencies**
 
@@ -44,8 +67,4 @@ When you require a bower package to be included in the final bundle, there could
   If none of that works and are having trouble, ask in the `FEDs` room on hipchat.
 
 
-## JavaScript Packages
 
-No-brainer, install it as a production dependency: `npm install package-name --save`.
-
-Then simply require it: `let mod = require('package-name');`
