@@ -1,4 +1,7 @@
-// An example configuration file
+/*
+  Using protractor for angular and non-angular apps.
+  http://ng-learn.org/2014/02/Protractor_Testing_With_Angular_And_Non_Angular_Sites/
+*/
 exports.config = {
 
   capabilities: {
@@ -7,9 +10,13 @@ exports.config = {
   framework: 'jasmine2',
   specs: ['functional/**/*.spec.js'],
 
-  // baseUrl: 'http://localhost:'+ (process.env.PORT||8558),
-
   jasmineNodeOpts: {
-    showColors: true, // Use colors in the command line report.
+    showColors: true,
+  },
+
+  onPrepare: function(){
+    global.isAngularSite = function(flag){
+      browser.ignoreSynchronization = !flag;
+    };
   }
 };

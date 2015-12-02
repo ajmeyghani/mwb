@@ -1,7 +1,5 @@
 # Minimal Webpack Boilerplate
 
-A minimal webpack boilerplate focused on Angular. You can easily use it for other purposes
-
 ### Table of Contents
 
 - [Getting Started](./docs/start.md)

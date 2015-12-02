@@ -9,20 +9,50 @@ var clientPath = path.resolve('./client');
 var clientSrc = path.resolve(clientPath, 'src');
 var bowerPath = path.resolve(clientPath, 'bower');
 
+/* init plugins */
 var plugins = [
   new webpack.DefinePlugin({ IS_PROD: process.env.NODE_ENV === 'production' }),
   new webpack.DefinePlugin({ IS_TEST: process.env.NODE_ENV === 'test' }),
   new webpack.DefinePlugin({ IS_DEV: process.env.NODE_ENV === undefined }),
-  new ExtractTextPlugin(isProd ? 'main.min.css' : 'main.css')
 ];
 
+/* uglify settings for prod */
 if (isProd) {
   var uglify = new webpack.optimize.UglifyJsPlugin({
-      mangle: false
+      mangle: false,
+      compress: {
+        warnings: false
+      }
   });
   plugins.push(uglify);
 }
 
+/* init loaders */
+var loaders = [];
+
+/* babel and asset settings */
+var loader = [
+  { test: /\.js$/,          loader: 'babel', include: clientSrc },
+  { test: /\.html$|\.htm$/, loader: 'raw',   include: clientSrc },
+  { test: /\.(png|jpg|jpeg)$|\.(woff|woff2|ttf|eot|svg)(.*)?$/,
+    loader: "url?limit=10000&name=[name][hash:6].[ext]", // spit out a file if larger than 10kb
+    include: [clientSrc, bowerPath]
+  }
+];
+
+/* css loader settings */
+var isSeparateCss = true;
+var cssLoaderSettings = {
+  test:/\.css$/, loader: isSeparateCss ? ExtractTextPlugin.extract('style-loader', 'css-loader') : 'style!css'
+};
+if (isSeparateCss) {
+  /* If you enable `separateCSS`, make sure to add main.css to index.html */
+  /* <link rel="stylesheet" href="/static/bundle/main.css"> */
+  plugins.push(new ExtractTextPlugin(isProd ? 'main.min.css' : 'main.css'));
+}
+loaders.push(cssLoaderSettings);
+
+/* export config */
 module.exports = {
   entry: path.resolve(clientSrc, 'main.js'),
   output: {
@@ -32,22 +62,19 @@ module.exports = {
     library: 'mymodulename'
   },
   module: {
-    loaders: [
-       { test: /\.js$/,          loader: 'babel', include: clientSrc },
-       { test: /\.html$|\.htm$/, loader: 'raw',   include: clientSrc },
-       { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader') },
-       { test: /\.(png|jpg|jpeg)$|(\.eot.*|\.woff.*|\.woff2*|\.ttf.*|\.svg.*)/,
-         loader: "url?limit=10000&name=[name][hash:6].[ext]", // spit out a file if larger than 10kb
-         include: [clientSrc, bowerPath] }
-     ]
+    loaders: loaders
   },
   plugins: plugins,
   resolve: {
     modulesDirectories: ['node_modules', clientSrc, bowerPath]
   },
   externals: {
-    '_angular_': 'angular' // `angular` refers to the global object that would exist on window during run time from a script tag for example.
+    /*
+    `angular` refers to the global object that would exist on window
+     during run time from a script tag for example.
+        usage: require('_angular_').module(...);
+    */
+    // '_angular_': 'angular'
   }
 
 };
-
