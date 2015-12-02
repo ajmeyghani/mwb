@@ -2,6 +2,7 @@ let path = require('path');
 let express = require('express');
 let app = express();
 var env = process.env.NODE_ENV;
+var isProd = env === 'production';
 
 let serverSettings = { client: path.resolve('./client') };
 
@@ -50,7 +51,12 @@ app.get('*', (req, res, next) => {
  res.status(404).redirect("/404");
 });
 
-let port = process.env.PORT || 8760;
+let port = undefined;
+if (isProd) {
+  port = 8080
+} else {
+  port = process.env.PORT || 8760;
+}
 app.listen(port, function () {
   console.log('go to -> http://localhost:' + port);
   if (env === 'production') {

@@ -87,4 +87,4 @@ Then, you can serve it with:
 
 ### Build and serve
 
-The alias for buld and run is `npm run pl`
+The alias to build and serve `npm run prod`
