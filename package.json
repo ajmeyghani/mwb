@@ -1,11 +1,11 @@
 {
   "name": "mwb",
   "version": "1.0.0",
-  "description": "### Table of Contents",
+  "description": "Minimal Webpack Boilerplate",
   "main": "client.config.js",
   "scripts": {
     "start": "npm run clean && ./bin/prok config/dev.procfile",
-    "clean": "./bin/rimraf client/public client/static/bundle",
+    "clean": "./bin/rimraf build client/static/bundle dist",
     "build": "./tasks/build",
     "client:compile": "bin/webpack --config config/client.config.js -w --debug --devtool eval --output-pathinfo",
     "server": "PORT=8051 nodemon -w server/dist/index.bundle.js server/dist/index.bundle.js",
@@ -21,7 +21,7 @@
     "type": "git",
     "url": "https://github.com/st32lth/mwb.git"
   },
-  "author": "",
+  "author": "Stealth",
   "devDependencies": {
     "babel-core": "^5.8.34",
     "babel-loader": "^5.3.3",
@@ -30,6 +30,7 @@
     "css-loader": "^0.23.0",
     "exports-loader": "^0.6.2",
     "expose-loader": "^0.7.1",
+    "express": "^4.13.3",
     "extract-text-webpack-plugin": "^0.9.1",
     "file-loader": "^0.8.5",
     "fs-extra": "^0.26.2",
@@ -48,9 +49,7 @@
     "url": "https://github.com/st32lth/mwb/issues"
   },
   "homepage": "https://github.com/st32lth/mwb",
-  "dependencies": {
-    "express": "^4.13.3"
-  },
+  "dependencies": {},
   "directories": {
     "doc": "docs"
   }

@@ -1,36 +1,49 @@
-let path = require('path');
-let express = require('express');
-let app = express();
-var env = process.env.NODE_ENV;
-var isProd = env === 'production';
+const path = require('path');
+const env = process.env.NODE_ENV;
+const isProd = env === 'production';
+const express = require('express');
+const app = express();
 
-let serverSettings = { client: path.resolve('./client') };
+const paths = {
+  client: path.resolve('./client'),
+  server: path.resolve('./server'),
+  bower: path.resolve('bower'),
+  node_modules: path.resolve('node_modules'),
+  build: path.resolve('./build')
+};
+
+const serverSettings = { client: path.resolve('./client') };
 
 /*\ Public static route for static assets.
 \*/
 
-if (env === 'production') {
-  app.use('/', express.static(path.resolve('client/public')));
+if (isProd) {
+  app.use('/', express.static(path.resolve(paths.build)));
 }
+app.use('/bower', express.static(paths.bower));
+app.use('/node_modules', express.static(paths.node_modules));
 
-let bowerPath = path.join(serverSettings.client, 'bower');
-let nodeModulesPath = path.join(serverSettings.client, 'node_modules');
-let staticPath = path.join(serverSettings.client, 'static');
-let publicPath = path.join(serverSettings.client, 'public');
-app.use('/bower', express.static(bowerPath));
+const staticPath = path.join(paths.client, 'static');
 app.use('/static', express.static(staticPath));
-app.use('/public', express.static(publicPath));
-app.use('/node_modules', express.static(nodeModulesPath));
 
 /*\ Main route:
-  - If the request URI does not start with `api`, serve `index.html`.
+  - Serve index.html if not /api or not /somethingelse
+  - That is /api and /somethingelse are reserved
 \*/
-app.all(/^\/(?!api).*/, (req, res) => {
-  if (env !== "production") {
-    res.sendFile('index.html', {root: serverSettings.client });
+const serverRoot = isProd ? paths.build : paths.client;
+app.all(/^\/(?!api|somethingelse).*/, (req, res) => {
+  if (!isProd) {
+    res.sendFile('index.html', {root: serverRoot });
   } else {
-    res.sendFile('home.html', {root: path.resolve('./client/public') });
+    res.sendFile('home.html', {root: serverRoot });
   }
+});
+
+/* The somethingelse endpoint */
+app.all('/somethingelse', (req, res) => {
+  res.json({
+    "app": "something"
+  });
 });
 
 /*\ Api route example
@@ -65,3 +78,5 @@ app.listen(port, function () {
     require('open')('http://localhost:' + port);
   }
 });
+
+

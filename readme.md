@@ -15,7 +15,3 @@
 - [Installing App Dependencies](./docs/deps.md)
 
 - [Test and Build](./docs/test.md)
-
-- [Deploy](./docs/deploy.md)
-
-- [Contribution](./docs/contrib.md)

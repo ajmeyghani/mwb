@@ -1,29 +1,28 @@
 # Installing CLIENT Dependencies
 
-### FIRST MAKE SURE YOU ARE IN THE CLIENT FOLDER `cd client` ##
+### FIRST MAKE SURE YOU ARE IN THE ROOT OF THE PROJECT
 
 
 ## NPM Packages
 
-### FIRST MAKE SURE YOU ARE IN THE CLIENT FOLDER `cd client` ##
+### FIRST MAKE SURE YOU ARE IN THE ROOT OF THE PROJECT
 
 No-brainer, install it as a production dependency: `npm install package-name --save`.
 
 Then simply require it: `const mod = require('package-name');`
 
-**Example: Using angular from npm**
+**Example: Using a phone formatting library from npm**
 
 ```
-cd client
-npm i angular -S
+cd app
+npm i phone-formatter -S
 ```
 
 then in `client/src/main.js`:
 
 ```
-const angular = require('anguilar')
+const phone = require('phone-formatter');
 ```
-
 
 ## Bower Packages
 
@@ -31,19 +30,19 @@ const angular = require('anguilar')
 
 For packages like `angular-mocks` that are for development only, use the `-D` flag to install them as dev dependencies:
 
-  `bower install name-of-package -D`
-
-Then, simply use a script tag to load it.
+    `bower install name-of-package -D`
 
 **Production Dependencies**
 
 Use the `--save` or `-S` flag for dependencies of the app.
 
-Then simply require the package:
-
-  `require('bower/name-of-package/file.js');`
+eg: `bower i angular -S`
 
 ### NOTE:
+
+When you use `require` to load a module, it will be included in the final bundle. So if you do `require('angular')`, it will load angular script in the final bundle and that's probably not something that you want. Just be aware that everytime that you use the `require` method to load modules, it will be included in the final bundle.
+
+#### Shimming Front-end Packages
 
 When you require a bower package to be included in the final bundle, there could be a chance that the package is not written in correct UMD format. In that case, see which of the following applies and follow the recipe for each case.
 
@@ -62,9 +61,4 @@ When you require a bower package to be included in the final bundle, there could
 
 - If you simply want to execute a script in the global context, use the [script loader](https://github.com/webpack/script-loader) _**Use this as the last resort**_:
 
-        require(script!bower/name-of-package/files.js);
-
-  If none of that works and are having trouble, ask in the `FEDs` room on hipchat.
-
-
-
+    `require(script!bower/name-of-package/files.js);`

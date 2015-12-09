@@ -1,7 +1,7 @@
 ## Frameworks & Languages
 
 ### Folder structure
-- All the source code is included in the `client/src` 
+- All the client source code goes in the `client/src`
 
 ### Frameworks and Languages
 
@@ -16,7 +16,7 @@
 
 - Style authoring:
 
-	By default, no pre-processor is used. We recommend SASS but you don't have to use a pre-processor. Instead you can use PostCSS plugins and the [PostCSS loader](https://github.com/postcss/postcss-loader).
+	By default, no pre-processor is used. You can use PostCSS plugins and the [PostCSS loader](https://github.com/postcss/postcss-loader) to extend your css.
 
 - JS: ES6.
 

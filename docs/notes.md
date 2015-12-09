@@ -1,9 +1,10 @@
 # IMPORTANT NOTES
 
+## General Notes
 
-Before you start, note:
+- All the client source code would go into *`client/src`*. This includes all the assets like css, js, png, svg, template files, etc etc. when you build the project with `npm run build`, it will genereate a `build` folder that should not be touched directly.
 
-- All the client source code should go into *`client/src`*. This includes all the assets like css, js, png, svg, template files, etc etc.
+- When you use `require` to load a module, it will be included in the final bundle. So if you do `require('angular')`, it will load angular script in the final bundle and that's probably not something that you want. Just be aware that everytime that you use the `require` method to load modules, they will be included in the final bundle. So, if you want to load libraries like angular, just load them with a script tag in your html.
 
 - If you want to access arbitrary static files, put them in `client/static`. This folder is exposed via the `/static` server path if you decide to take advantage of the provided express server.
 
@@ -11,4 +12,16 @@ Before you start, note:
 
 - Webpack is already looking at the `client/src` folder for "assets". So you can simply require assets without specifying `client/src` everytime. That is, if a file is at `client/src/component/component.js`, you can require it with: `require('component/component.js')`. If you want to set more "modules folder", add them to the `config/client.config.js` file, in the `resolve` section.
 
-- Use webpack externals if you don't want to include a module in your final bundle (but load it via a script tag). See `config/client.config.js` for more information.
+- Use webpack externals if you don't want to include a module in your final bundle (but load it via a script tag). See this [post](http://stackoverflow.com/questions/23305599/webpack-provideplugin-vs-externals) for more information.
+
+## Bower vs Npm
+
+Front-end package management is not as clean as other technologies. Npm used to contain only JavaScript packages, but then people started hosting client-side packages as well due to its superior nature to bower. And it got tricky: there are packages that available both on bower and npm. There are packages that are only available on one, and so on. Below is a suggestion on when to use what:
+
+In the root of the app you can use both `bower` and `npm` to install packages:
+
+- Use bower for strictly front-end plugins: eg: a plugin for drag and drop: `boewr i package -S`
+- Use npm for JavaScript packages: eg: a package for formatting phone numbers: `npm i package -S`
+- If there is a **client side** package that is available on both, it would depend on your project and how other parts of your app is managed.
+
+

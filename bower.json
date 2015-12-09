@@ -8,10 +8,18 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components",
-    "public/lib",
-    "test",
-    "tests"
+     "bower_components",
+     "public/lib",
+     "public",
+     "build",
+     "test",
+     "tests",
+     "config",
+     "docs",
+     "server",
+     "tasks",
+     "Dockerfile",
+     "client"
   ],
   "dependencies": {},
   "devDependencies": {}

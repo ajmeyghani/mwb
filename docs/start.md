@@ -4,6 +4,7 @@
 - bower: `npm i bower -g`
 - Java (for protractor)
 - protractor: `npm i protractor@2.5.1 -g`
+- phantomjs: `npm i phantomjs -g` (for running unit tests in ci mode)
 - nodemon: `npm i nodemon -g` (for development)
 
 **Oneliner:**
@@ -14,9 +15,8 @@
 
 Set up dependencies with:
 
-1. `npm i` in the root of the project
-2. `npm i` in the server folder
-3. `bower i` in the client folder
+1. `npm i && bower i` in the root of the project to install client dependencies
+2. `npm i` in the server folder to install server dependencies
 
 
 # Start Development Servers

@@ -17,10 +17,10 @@
 
 You can build the client with:
 
-	npm run build
+    npm run build
 
 Then, you can serve it with:
 
-	npm run server:prod
+    npm run server:prod
 
 or you can use the alias: `npm run prod` to build and serve in prod mode.
