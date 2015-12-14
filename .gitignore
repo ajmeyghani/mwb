@@ -35,3 +35,7 @@ client/public
 build
 client/webpack-bundle
 dist
+
+
+# server
+server/dist
