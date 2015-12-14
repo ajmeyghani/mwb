@@ -1,5 +1,7 @@
 ## Tasks
 
+All the tasks are defined in `package.json` in the root of the project. You can get the following list by running `npm run` as well
+
 - `npm start`: Start developer servers
 - `npm test`: Run unit tests in CI mode
 - `npm run tdd`: Run unit tests in watch mode
