@@ -9,46 +9,35 @@ const paths = {
   server: path.resolve('./server'),
   bower: path.resolve('bower'),
   node_modules: path.resolve('node_modules'),
-  build: path.resolve('./build')
+  dist: path.resolve('dist')
 };
-
-const serverSettings = { client: path.resolve('./client') };
 
 /*\ Public static route for static assets.
 \*/
-
 if (isProd) {
-  app.use('/', express.static(path.resolve(paths.build)));
+  app.use('/', express.static(path.resolve(paths.dist)));
 }
 app.use('/bower', express.static(paths.bower));
 app.use('/node_modules', express.static(paths.node_modules));
 
-const staticPath = path.join(paths.client, 'static');
-app.use('/static', express.static(staticPath));
+app.use('/static', express.static(path.join(paths.client, 'static')));
+
+if (!isProd) {
+   /* client webpack bundle output */
+  app.use('/webpack-bundle', express.static(path.resolve(paths.client, 'webpack-bundle')));
+}
+
 
 /*\ Main route:
-  - Serve index.html if not /api or not /somethingelse
-  - That is /api and /somethingelse are reserved
+  - Serve index.html if not /api or not /otherendpoint
+  - That is /api and /otherendpoint are reserved
 \*/
-const serverRoot = isProd ? paths.build : paths.client;
-app.all(/^\/(?!api|somethingelse).*/, (req, res) => {
-  if (!isProd) {
-    res.sendFile('index.html', {root: serverRoot });
-  } else {
-    res.sendFile('home.html', {root: serverRoot });
-  }
-});
-
-/* The somethingelse endpoint */
-app.all('/somethingelse', (req, res) => {
-  res.json({
-    "app": "something"
-  });
+app.all(/^\/(?!api|otherendpoint).*/, (req, res) => {
+  res.sendFile('index.html', {root: isProd ? paths.dist : paths.client });
 });
 
 /*\ Api route example
 \*/
-/* this could be cached with redis for example */
 app.get('/api/data', (req, res) => {
   res.json({
     name: 'boilerplate'
@@ -57,7 +46,7 @@ app.get('/api/data', (req, res) => {
 
 /* client handle 404 */
 app.all("/404", (req, res, next) => {
-  res.sendFile("index.html", {root: serverSettings.client });
+  res.sendFile("index.html", {root: paths.client });
 });
 
 /* catch invalid requests */
@@ -78,5 +67,3 @@ app.listen(port, function () {
     require('open')('http://localhost:' + port);
   }
 });
-
-

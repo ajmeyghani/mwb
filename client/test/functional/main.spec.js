@@ -1,9 +1,9 @@
-describe('Sample', function () {
+describe('The page title', function () {
   beforeEach(function() {
     isAngularSite(false);
   });
-  it('should', function () {
+  it('should be correct', function () {
     browser.get('http://localhost:8051');
-    expect(browser.getTitle()).toBe('Boilerplate2');
+    expect(browser.getTitle()).toBe('Minimal Webpack Boilerplate');
   });
 });

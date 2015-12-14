@@ -7,8 +7,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var clientPath = path.resolve('./client');
 var clientSrc = path.resolve(clientPath, 'src');
-var bowerPath = path.resolve('bower');
-var nodeModulesPath = path.resolve('node_modules');
+var bowerPath = path.resolve(clientPath, 'bower');
 
 /* init plugins */
 var plugins = [
@@ -28,22 +27,20 @@ if (isProd) {
   plugins.push(uglify);
 }
 
-
 /* init loaders with babel and asset settings */
 var loaders = [
   { test: /\.js$/,          loader: 'babel', include: clientSrc },
   { test: /\.html$|\.htm$/, loader: 'raw',   include: clientSrc },
   { test: /\.(png|jpg|jpeg)$|\.(woff|woff2|ttf|eot|svg)(.*)?$/,
-    loader: "url?limit=10000&name=[name][hash:6].[ext]" // spit out a file if larger than 10kb
-    // include: [clientSrc, bowerPath]
+    loader: "url?limit=10000&name=[name][hash:6].[ext]", // spit out a file if larger than 10kb
+    include: [clientSrc, bowerPath]
   }
 ];
 
 /* css loader settings */
 var isSeparateCss = true;
 var cssLoaderSettings = {
-  test:/\.css$/, loader: isSeparateCss ?
-                 ExtractTextPlugin.extract('style-loader', 'css-loader') : 'style!css'
+  test:/\.css$/, loader: isSeparateCss ? ExtractTextPlugin.extract('style-loader', 'css-loader') : 'style!css'
 };
 if (isSeparateCss) {
   /* If you enable `separateCSS`, make sure to add main.css to index.html
@@ -61,7 +58,7 @@ module.exports = {
   entry: path.resolve(clientSrc, 'main.js'),
   output: {
     filename: isProd ? 'bundle.min.js' : 'bundle.js',
-    path:  isProd ? path.resolve('build/static/bundle') : path.resolve(clientPath, 'static/bundle'),
+    path:  isProd ? path.resolve('dist') : path.resolve(clientPath, 'webpack-bundle'),
     libraryTarget: 'umd',
     library: 'mymodulename'
   },
@@ -70,7 +67,7 @@ module.exports = {
   },
   plugins: plugins,
   resolve: {
-    modulesDirectories: [nodeModulesPath, clientSrc, bowerPath, clientPath]
+    modulesDirectories: ['node_modules', clientSrc, bowerPath, clientPath]
   },
   externals: {
     /*
