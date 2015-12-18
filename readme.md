@@ -1,4 +1,6 @@
-# Minimal [Webpack](https://github.com/petehunt/webpack-howto) Boilerplate
+# MWB
+
+A Webpack boilerplate for developing client-side apps
 
 # Important
 
