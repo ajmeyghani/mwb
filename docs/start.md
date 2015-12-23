@@ -1,4 +1,8 @@
-# Installing Global Dependencies
+# Load Node v0.12.9
+
+`nvm use 0.12.9`
+
+# Install Global Dependencies
 
 - Node > 0.12.0 and npm > 2.5.0
 - bower: `npm i bower -g`
@@ -10,7 +14,7 @@
 
     npm i bower protractor@2.5.1 nodemon -g
 
-# Installing Local Dependencies
+# Install Local Dependencies
 
 Set up dependencies with:
 
