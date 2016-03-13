@@ -1,6 +1,6 @@
 # MWB
 
-A Webpack boilerplate for developing client-side apps
+A Webpack boilerplate for developing client-side apps.
 
 # Important
 
